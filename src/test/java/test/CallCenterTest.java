@@ -17,7 +17,7 @@ public class CallCenterTest {
 
 	private Dispatcher dispatcher;
 	private List<Call> calls;
-	private static final int NUM_CALLS=15;
+	private static final int NUM_CALLS=10;
 	@Before
 	public void dispatcherSetUp() {
 		dispatcher=new Dispatcher();

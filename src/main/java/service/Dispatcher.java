@@ -6,6 +6,7 @@ import java.util.concurrent.Executors;
 import org.apache.log4j.Logger;
 
 import dao.EmployeeDao;
+import dao.factory.DaoFactory;
 import model.Call;
 import model.Employee;
 /**
@@ -19,7 +20,7 @@ public class Dispatcher {
 	final static Logger logger = Logger.getLogger(Dispatcher.class);
 	
 	private static final int MAX_CONCURRENT_CALLS=10;
-	
+	private static final int WAIT_TIME_STRATEGY=1000;
 	private ExecutorService executorService;
 	
 	private EmployeeDao employeeDao;
@@ -32,19 +33,24 @@ public class Dispatcher {
 		Employee op=null;
 		while(op==null) {
 			op= employeeDao.getFreeEmployee();
-			if(op==null)
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			waitStrategy(op);
 		}
 		call.setEmployee(op);
 		logger.debug("Adding call to pool and show queue info: "+this.executorService.toString());
 		employeeDao.setFutureToEmployee(this.executorService.submit(call));
 		
 	}
+	
+	private void waitStrategy(Employee employee) {
+		if(employee==null)
+			try {
+				Thread.sleep(Dispatcher.WAIT_TIME_STRATEGY);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	
 	
 	
 	/**

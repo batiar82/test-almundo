@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="test.CallCenterTest" project="test" 
+    file="/test/src/test/java/test/CallCenterTest.java" binary="false" label="callCenterTest" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="70" y="0"/>    
+    <execution id="2">      
+      <position height="63" width="106" x="5" y="92"/>    
+    </execution>    
+    <execution id="5">      
+      <position height="484" width="106" x="5" y="177"/>    
+    </execution>  
+  </object>  
+  <object id="10" language="java" name="model.Call" project="test" file="/test/src/main/java/model/Call.java" 
+    binary="false" label="call" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="206" y="0"/>    
+    <execution id="4">      
+      <position height="21" width="44" x="115" y="113"/>    
+    </execution>    
+    <execution id="11">      
+      <position height="21" width="44" x="115" y="480"/>    
+    </execution>    
+    <execution id="12">      
+      <position height="21" width="44" x="115" y="568"/>    
+    </execution>  
+  </object>  
+  <object id="13" language="java" name="service.Dispatcher" project="test" 
+    file="/test/src/main/java/service/Dispatcher.java" binary="false" label="dispatcher" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="250" y="0"/>    
+    <execution id="7">      
+      <position height="151" width="85" x="163" y="198"/>    
+    </execution>    
+    <execution id="9">      
+      <position height="270" width="7" x="202" y="370"/>    
+    </execution>    
+    <execution id="19">      
+      <position height="80" width="7" x="205" y="459"/>    
+    </execution>  
+  </object>  
+  <object id="27" language="java" name="dao.factory.DaoFactory" project="test" 
+    file="/test/src/main/java/dao/factory/DaoFactory.java" binary="false" label="daoFactory" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="308" y="0"/>    
+    <execution id="15">      
+      <position height="109" width="87" x="252" y="219"/>    
+    </execution>  
+  </object>  
+  <object id="30" language="java" name="dao.impl.MemoryEmployeeDaoImpl" project="test" 
+    file="/test/src/main/java/dao/impl/MemoryEmployeeDaoImpl.java" binary="false" label="memoryEmployeeDaoImpl" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="29">      
+      <position height="67" width="170" x="343" y="240"/>    
+    </execution>    
+    <execution id="17">      
+      <position height="74" width="7" x="425" y="394"/>    
+    </execution>    
+    <execution id="34">      
+      <position height="21" width="7" x="425" y="426"/>    
+    </execution>    
+    <execution id="32">      
+      <position height="21" width="7" x="425" y="265"/>    
+    </execution>    
+    <execution id="26">      
+      <position height="21" width="170" x="343" y="522"/>    
+    </execution>    
+    <execution id="23">      
+      <position height="21" width="170" x="343" y="598"/>    
+    </execution>  
+  </object>  
+  <object id="35" language="java" name="java.util.concurrent.ExecutorService" project="test" 
+    file="C:/Program Files (x86)/Java/jre1.8.0_161/lib/rt.jar" binary="true" label="executorService" type="interface" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="985" y="0"/>    
+    <execution id="21">      
+      <position height="67" width="117" x="517" y="543"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="37" interaction-operator="LOOP">    
+    <interaction-operand id="38">      
+      <fragment refId="3"/>    
+    </interaction-operand>  
+  </combined-fragment>  
+  <combined-fragment id="39" interaction-operator="LOOP">    
+    <interaction-operand id="40">      
+      <fragment refId="14"/>      
+      <fragment refId="25"/>      
+      <fragment refId="16"/>      
+      <fragment refId="33"/>      
+      <fragment refId="36"/>      
+      <fragment refId="6"/>      
+      <fragment refId="24"/>      
+      <fragment refId="8"/>      
+      <fragment refId="28"/>      
+      <fragment refId="31"/>      
+      <fragment refId="20"/>      
+      <fragment refId="18"/>      
+      <fragment refId="22"/>    
+    </interaction-operand>  
+  </combined-fragment>  
+  <message id="3" operation="Call(java.lang.Integer,java.time.Duration)" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" operation="Dispatcher()" asynchronous="false">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="8" operation="dispatchCall(model.Call):void" asynchronous="false">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="14" operation="getDao(java.lang.String):dao.EmployeeDao" asynchronous="false">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="15"/>  
+  </message>  
+  <message id="16" operation="getFreeEmployee():model.Employee" asynchronous="false">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="17"/>  
+  </message>  
+  <message id="18" operation="waitStrategy(model.Employee):void" asynchronous="false">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="19"/>  
+  </message>  
+  <message id="20" operation="submit(java.util.concurrent.Callable&lt;T&gt;):java.util.concurrent.Future&lt;T&gt;" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="21"/>  
+  </message>  
+  <message id="22" operation="setFutureToEmployee(java.util.concurrent.Future&lt;model.Employee&gt;):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="23"/>  
+  </message>  
+  <message id="24" operation="setEmployee(model.Employee):void" asynchronous="false">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="25" operation="setFutureToEmployee(java.util.concurrent.Future&lt;model.Employee&gt;):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="26"/>  
+  </message>  
+  <message id="28" operation="MemoryEmployeeDaoImpl()" asynchronous="false">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="29"/>  
+  </message>  
+  <message id="31" operation="generateEmployees():void" asynchronous="false">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="32"/>  
+  </message>  
+  <message id="33" operation="checkEndedFutures():void" asynchronous="false">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="34"/>  
+  </message>  
+  <message id="36" operation="call():model.Employee" asynchronous="false">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>
+</sequence-diagram>

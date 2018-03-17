@@ -1,4 +1,4 @@
-package service;
+package dao.factory;
 
 import dao.EmployeeDao;
 import dao.impl.MemoryEmployeeDaoImpl;
