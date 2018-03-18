@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+<sequence-diagram version="1.2.2" icons="true" automaticImage="PNG" generate-combined-fragments="true">  
   <object id="1" language="java" name="test.CallCenterTest" project="test" 
     file="/test/src/test/java/test/CallCenterTest.java" binary="false" label="callCenterTest" type="class" 
     autoSize="true">    
