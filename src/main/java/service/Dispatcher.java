@@ -20,7 +20,7 @@ public class Dispatcher {
 	final static Logger logger = Logger.getLogger(Dispatcher.class);
 	
 	private static final int MAX_CONCURRENT_CALLS=10;
-	private static final int WAIT_TIME_STRATEGY=1000;
+	private static int WAIT_TIME_STRATEGY=1000;
 	private ExecutorService executorService;
 	
 	private EmployeeDao employeeDao;
@@ -40,17 +40,28 @@ public class Dispatcher {
 		employeeDao.setFutureToEmployee(this.executorService.submit(call));
 		
 	}
-	
+	/**
+	 * Method to apply a waiting time to be used when there are no free employees
+	 * @param employee
+	 */
 	private void waitStrategy(Employee employee) {
 		if(employee==null)
 			try {
+				logger.debug("Waiting...");
 				Thread.sleep(Dispatcher.WAIT_TIME_STRATEGY);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-	
+	/**
+	 * Sets the time to wait for a free employee
+	 * @param time time in milliseconds to wait for a free Employee
+	 */
+	public void setWaitTime(int time) {
+		logger.debug("Changing wait time to: "+time+" millis.");
+		Dispatcher.WAIT_TIME_STRATEGY=time;
+	}
 	
 	
 	/**
