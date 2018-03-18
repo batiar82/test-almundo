@@ -46,6 +46,12 @@ public class MemoryEmployeeDaoImpl implements EmployeeDao{
 		int empIdCounter=1;
 		employees=new PriorityQueue<Employee>();
 		Employee aEmployee;
+		/*Creating Directors*/
+		for(int i=0;i<this.directorQty;i++) {
+			aEmployee=new Director(empIdCounter);
+			employees.add(aEmployee);
+			empIdCounter++;
+		}	
 		/*Creating Operators*/
 		for(int i=0;i<this.operatorQty;i++) {
 			aEmployee=new Operator(empIdCounter);
@@ -58,12 +64,7 @@ public class MemoryEmployeeDaoImpl implements EmployeeDao{
 			employees.add(aEmployee);
 			empIdCounter++;
 		}
-		/*Creating Directors*/
-		for(int i=0;i<this.directorQty;i++) {
-			aEmployee=new Director(empIdCounter);
-			employees.add(aEmployee);
-			empIdCounter++;
-		}		
+			
 	}
 	private void checkEndedFutures() {
 		logger.debug("Checking for finished Employees on Futures list");

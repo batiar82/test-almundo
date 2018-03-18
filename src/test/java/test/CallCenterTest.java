@@ -35,6 +35,12 @@ public class CallCenterTest {
 		Assert.assertNotNull("Calls cannot be null", calls);
 		for(Call call : calls) {
 			dispatcher.dispatchCall(call);
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}
